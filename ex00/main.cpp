@@ -14,6 +14,7 @@ int main() {
 	}
 
 	//Test 2: Grade too high during construction
+	std::cout << std::endl;
 	try {
 		std::cout << "//Test 2: Grade too high during construction" << std::endl;
 		Bureaucrat b2("Tom", 0);
@@ -21,9 +22,10 @@ int main() {
 		std::cerr << "Caught expected error: " << e.what() << std::endl;
 	}
 
-	//Test 2: Grade too high during incrementation
+	//Test 3: Grade too high during incrementation
+	std::cout << std::endl;
 	try {
-		std::cout << "//Test 2: Grade too high during incrementation" << std::endl;
+		std::cout << "//Test 3: Grade too high during incrementation" << std::endl;
 		Bureaucrat b3("Paul", 2);
 		std::cout << b3;
 		b3.incrementGrade();
@@ -34,9 +36,10 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	//Test 2: Grade too low during incrementation
+	//Test 4: Grade too low during incrementation
+	std::cout << std::endl;
 	try {
-		std::cout << "//Test 2: Grade too low during incrementation" << std::endl;
+		std::cout << "//Test 4: Grade too low during incrementation" << std::endl;
 		Bureaucrat b4("Adam", 148);
 		b4.decrementGrade();
 		std::cout << "After decrement: " << b4;
