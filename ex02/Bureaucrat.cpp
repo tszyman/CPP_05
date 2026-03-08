@@ -2,6 +2,10 @@
 #include "AForm.hpp"
 #include <iostream>
 
+#define RESET	"\033[0m"
+#define RED		"\033[31m"
+#define GREEN	"\033[32m"
+
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
@@ -48,10 +52,20 @@ void		Bureaucrat::decrementGrade() {
 void		Bureaucrat::signForm(AForm &form) {
 	try {
 		form.beSigned(*this);
-		std::cout << _name << " signed " << form.getName() << std::endl;
+		std::cout << _name << "(Grade: " << _grade << ")" << GREEN << " signed " << RESET << form.getName() << std::endl;
 
 	} catch (std::exception &e) {
-		std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << _name << "(Grade: " << _grade << ")" << RED << " couldn't sign " << RESET << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void		Bureaucrat::executeForm(AForm const & form) const {
+	try {
+		form.execute(*this);
+		std::cout << _name << "(Grade: " << _grade << ")" << GREEN << " executed " << RESET << form.getName() << std::endl;
+	} catch (std::exception & e) {
+		//If execution failed (not signed or grade too low), print the reason
+		std::cout << _name << "(Grade: " << _grade << ")" << RED << " couldn't execute " << RESET << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 

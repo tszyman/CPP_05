@@ -1,5 +1,9 @@
 #include "RobotomyRequestForm.hpp"
 
+#define RESET	"\033[0m"
+#define RED		"\033[31m"
+#define GREEN	"\033[32m"
+
 //Default constructor
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("default_target") {}
 
@@ -30,8 +34,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 
 	// Generate a number (0 or 1)
 	if (std::rand() % 2 == 0) {
-		std::cout << _target << " has been robotomized successfully!" << std::endl;
+		std::cout << _target << " has been robotomized " << GREEN << "successfully!"<< RESET << std::endl;
 	} else {
-		std::cout << "The robotomy on " << _target << " failed." << std::endl;
+		std::cout << "The robotomy on " << _target << RED << " failed." << RESET << std::endl;
 	}
 }

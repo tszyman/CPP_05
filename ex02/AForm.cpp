@@ -58,16 +58,18 @@ void		AForm::beSigned(const Bureaucrat& b) {
 }
 
 // Validation logic
-// void AForm::checkExecutability(Bureaucrat const &executor) const {
-// 	if (!_isSigned)
-// 	{
-// 		throw std::runtime_error("Form is not signed.");
-// 	}
-// 	if (executor.getGrade() > _gradeToExec)
-// 	{
-// 		throw GradeTooLowException();
-// 	}
-// }
+void AForm::checkExecutability(Bureaucrat const &executor) const {
+	// Rule 1: The form must be signed
+	if (!this->getIsSigned())
+	{
+		throw AForm::NotSignedException();
+	}
+	// Rule 2: The bureaucrat's grade must be high enough
+	if (executor.getGrade() > this->getGradeToExec())
+	{
+		throw AForm::GradeTooLowException();
+	}
+}
 
 // Ostream overload
 std::ostream& operator<<(std::ostream& o, const AForm& f) {
