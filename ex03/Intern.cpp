@@ -15,8 +15,8 @@ Intern::~Intern() {};
 
 //Factory implementations
 AForm* Intern::createShrubbery(std::string t) {return new ShrubberyCreationForm(t);}
-AForm* Intern::createShrubbery(std::string t) {return new ShrubberyCreationForm(t);}
-AForm* Intern::createShrubbery(std::string t) {return new ShrubberyCreationForm(t);}
+AForm* Intern::createRobotomy(std::string t) {return new RobotomyRequestForm(t);}
+AForm* Intern::createPardon(std::string t) {return new PresidentialPardonForm(t);}
 
 AForm* Intern::makeForm(std::string formName, std::string target) {
 	// 1. Define the strings to match against
@@ -27,6 +27,12 @@ AForm* Intern::makeForm(std::string formName, std::string target) {
 	};
 
 	// 2. Define the array of pointers to member functions
+	/**
+	 * typedef AForm* (Intern::*MemFn)(std::string) 
+	 * defines a type for a pointer to a function inside the Intern class 
+	 * that takes a string and returns an AForm*. 
+	 * This satisfies the "Good dispatching" requirement.
+	 */
 	typedef AForm* (Intern::*MemFn)(std::string);
 	MemFn functions[] = {
 		&Intern::createShrubbery,
