@@ -16,7 +16,7 @@ class Bureaucrat {
 		~Bureaucrat();									// Destructor
 		
 		// Getters
-		std::string	getName() const;
+		const std::string	getName() const;
 		int			getGrade() const;
 
 		// Methods

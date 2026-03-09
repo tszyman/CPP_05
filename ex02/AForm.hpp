@@ -22,10 +22,10 @@ class AForm{
 		virtual ~AForm();			// Destructor (with virtual modifier to know which instance to destroy)
 
 		//Getters & setters
-		std::string getName() const;
+		const 		std::string getName() const;
 		int			getIsSigned() const;
-		int			getGradeToSign() const;
-		int			getGradeToExec() const;
+		const int	getGradeToSign() const;
+		const int	getGradeToExec() const;
 
 		// Member functions
 		void		beSigned(const Bureaucrat& b);
