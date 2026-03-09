@@ -31,7 +31,7 @@ Form& Form::operator=(const Form& rhs) {
 Form::~Form() {}
 
 // Getters
-std::string Form::getName() const {
+const std::string Form::getName() const {
 	return _name;
 }
 
